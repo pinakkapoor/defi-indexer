@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=65"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "defi-indexer"
+version = "0.2.0"
+description = "DeFi protocol analytics — index on-chain events, compute protocol metrics, serve via API"
+requires-python = ">=3.10"
+dependencies = [
+    "web3>=6.0",
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "sqlalchemy>=2.0",
+    "fastapi>=0.104",
+    "uvicorn>=0.24",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "pytest-asyncio>=0.21"]
