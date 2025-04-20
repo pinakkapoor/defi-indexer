@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///data/defi_indexer.db
+      - RPC_URL=${RPC_URL}
+    volumes:
+      - ./data:/app/data
+
+  indexer:
+    build: .
+    command: python -m indexer.run
+    environment:
+      - DATABASE_URL=sqlite:///data/defi_indexer.db
+      - RPC_URL=${RPC_URL}
+    volumes:
+      - ./data:/app/data
